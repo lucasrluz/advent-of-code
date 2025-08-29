@@ -55,15 +55,14 @@ public class Day2 {
        long sum = 0;
 
        while (sc.hasNextLine()) {
-           System.out.println(sum);
             String line = sc.nextLine();
 
             String[] lineArrayString = line.split("x");
 
             int[] lineArrayInt = Arrays.stream(lineArrayString).mapToInt(Integer::parseInt).toArray();
+
+            Arrays.sort(lineArrayInt);
         
-            // 2x3x4 -> 2+2+3+3 + 2*3*4
-            
             sum +=
                 (lineArrayInt[0] + lineArrayInt[0] + lineArrayInt[1] + lineArrayInt[1]) +
                 (lineArrayInt[0] * lineArrayInt[1] * lineArrayInt[2]);
