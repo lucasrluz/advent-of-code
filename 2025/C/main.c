@@ -17,48 +17,39 @@ int main() {
     char inputs_type[10] = {'L', 'L', 'R', 'L', 'R', 'L', 'L', 'L', 'R', 'L'};
 
     for (int i = 0; i < 10; i++) {
-        printf("%d\n", count);
+        printf("\nExecução %d\n", i);
+        printf("count antes: %d\n", count);
+
         if (inputs_type[i] == 'L') {
             int result = count - inputs[i];
 
-            if (result < 0) {
+            if (result == 0) {
+                count = 0;
+            } else if (result < 0) {
                 count = 100 - abs(result);
-
-                continue;
+            } else {
+                count = count - inputs[i];
             }
-
-            count = count - inputs[i];
         } else {
             int result = count + inputs[i];
 
-            if (result > 100) {
-                count = 0 + result;
-
-                continue;
+            if (result == 100) {
+                count = 0;
+            } else if (result > 100) {
+                count = result - 100;
+            } else {
+                count = result;
             }
-
-            count = count + inputs[i];
         }
 
+        printf("count depois: %d\n", count);
 
         if (count == 0) {
             zero_count += 1;
         }
     }
 
-    printf("%d", zero_count);
-
-    // if (input_type == 'L') {
-    //     int result = count - input;
-
-    //     if (result < 0) {
-    //         count = 100 - abs(result);
-    //     }
-
-    //     count = count - input;
-    // }
-
-    // printf("%d", count);
+    printf("zero_count: %d", zero_count);
         
     return 0;
 }
